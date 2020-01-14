@@ -6,6 +6,10 @@ public class TestClass {
         System.out.println("test method");
     }
 
+    @Test
+    public static void test2() {
+        System.out.println("test method2");
+    }
 
 
 }
