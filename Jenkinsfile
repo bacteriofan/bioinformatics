@@ -22,7 +22,9 @@ pipeline {
     stage('Autotests') {
       steps {
         git(url: 'https://github.com/bacteriofan/brainup.git', branch: 'master', changelog: true, poll: true)
-        sh 'mvn clean test'
+        sh '''
+mvn clean test -DsuiteXmlFile=tests.xml -Denv=prod
+'''
       }
     }
 
