@@ -28,15 +28,19 @@ mvn clean test -DsuiteXmlFile=tests.xml -Denv=prod
       }
     }
 
-   stage('Reports') {
-                   allure([
-                       includeProperties: false,
-                       jdk: '',
-                       properties: [],
-                       reportBuildPolicy: 'ALWAYS',
-                       results: [[path: 'target/allure-results']]
-                   ])
-               }
+    stage('reports') {
+        steps {
+        script {
+                allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'target/allure-results']]
+                ])
+        }
+        }
+    }
 
   }
 }
