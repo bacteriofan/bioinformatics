@@ -21,7 +21,7 @@ pipeline {
 
     stage('Autotests') {
       steps {
-        git(url: 'https://github.com/bacteriofan/KseniiaStepanova.git', branch: 'master', changelog: true, poll: true)
+        git(url: 'https://github.com/bacteriofan/brainup.git', branch: 'master', changelog: true, poll: true)
         sh 'mvn clean test'
       }
     }
