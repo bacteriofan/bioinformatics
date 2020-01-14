@@ -22,6 +22,7 @@ pipeline {
     stage('Autotests') {
       steps {
         sh 'git clone https://github.com/bacteriofan/KseniiaStepanova.git'
+        sh 'cd brainup'
       }
     }
 
