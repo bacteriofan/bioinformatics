@@ -20,22 +20,17 @@ pipeline {
     }
 
     stage('Autotests') {
-      parallel {
-        stage('Autotests') {
-          steps {
-            git(url: 'https://github.com/bacteriofan/brainup.git', branch: 'master', changelog: true, poll: true)
-            sh '''
+      steps {
+        git(url: 'https://github.com/bacteriofan/brainup.git', branch: 'master', changelog: true, poll: true)
+        sh '''
 mvn clean test -DsuiteXmlFile=tests.xml -Denv=prod
 '''
-          }
-        }
+      }
+    }
 
-        stage('Allure') {
-          steps {
-            sh 'allure serve target/allure-results'
-          }
-        }
-
+    stage('Allure') {
+      steps {
+        sh 'allure serve target/allure-results'
       }
     }
 
