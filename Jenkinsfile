@@ -28,11 +28,15 @@ mvn clean test -DsuiteXmlFile=tests.xml -Denv=prod
       }
     }
 
-    stage('Allure') {
-      steps {
-        sh 'allure serve target/allure-results'
-      }
-    }
+   stage('Reports') {
+                   allure([
+                       includeProperties: false,
+                       jdk: '',
+                       properties: [],
+                       reportBuildPolicy: 'ALWAYS',
+                       results: [[path: 'target/allure-results']]
+                   ])
+               }
 
   }
 }
