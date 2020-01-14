@@ -19,5 +19,11 @@ pipeline {
       }
     }
 
+    stage('Autotests') {
+      steps {
+        sh 'git clone https://github.com/bacteriofan/KseniiaStepanova.git'
+      }
+    }
+
   }
 }
